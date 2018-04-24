@@ -1,4 +1,5 @@
 // This is a sane selection of polyfills that support at least IE11
+import "regenerator-runtime/runtime";
 import 'es6-promise/auto';
 import 'whatwg-fetch';
 import 'intersection-observer';

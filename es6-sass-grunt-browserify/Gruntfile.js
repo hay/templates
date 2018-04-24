@@ -50,8 +50,10 @@ module.exports = function (grunt) {
 
         browserify : {
             src : {
-                src : 'app/js/app.js',
-                dest : 'app/bundle.js',
+                files : {
+                    'app/bundle.js' : 'app/js/app.js',
+                    'app/polyfills.js' : 'app/js/polyfills.js'
+                },
                 options : {
                     alias : {
                         "vue": "vue/dist/vue.common.js"
@@ -59,17 +61,7 @@ module.exports = function (grunt) {
                     browserifyOptions : {
                         debug : true
                     },
-                    transform : [
-                        ["babelify", {
-                            presets : ["env"],
-                            "plugins": [
-                                ["transform-runtime", {
-                                    "polyfill": false,
-                                    "regenerator": true
-                                }]
-                            ]
-                        }]
-                    ],
+                    transform : ["babelify"],
                     watch : true,
                     keepAlive : false
                 }
