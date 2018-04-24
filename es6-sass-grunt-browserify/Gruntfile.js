@@ -74,7 +74,7 @@ module.exports = function (grunt) {
                 },
                 options : {
                     alias : {
-                        "vue": "vue/dist/vue.common.js"
+                        "vue": "vue/dist/vue.min.js"
                     },
                     browserifyOptions : {
                         debug : false
