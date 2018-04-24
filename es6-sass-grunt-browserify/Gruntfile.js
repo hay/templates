@@ -53,12 +53,21 @@ module.exports = function (grunt) {
                 src : 'app/js/app.js',
                 dest : 'app/bundle.js',
                 options : {
+                    alias : {
+                        "vue": "vue/dist/vue.common.js"
+                    },
                     browserifyOptions : {
                         debug : true
                     },
                     transform : [
                         ["babelify", {
-                            presets : ["env"]
+                            presets : ["env"],
+                            "plugins": [
+                                ["transform-runtime", {
+                                    "polyfill": false,
+                                    "regenerator": true
+                                }]
+                            ]
                         }]
                     ],
                     watch : true,
@@ -70,6 +79,9 @@ module.exports = function (grunt) {
                 src : 'dist/js/app.js',
                 dest : 'dist/bundle.js',
                 options : {
+                    alias : {
+                        "vue": "vue/dist/vue.common.js"
+                    },
                     browserifyOptions : {
                         debug : false
                     },
