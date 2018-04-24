@@ -1,3 +1,30 @@
+function browserifyConf(src, dest, mode) {
+    const conf = {
+        src,
+        dest,
+        options : {
+            transform : ["babelify"],
+            browserifyOptions : {
+                debug : mode === 'dev'
+            }
+        }
+    };
+
+    if (mode === 'dev') {
+        conf.options.watch = true;
+        conf.options.keepAlive = false;
+    }
+
+    if (dest.includes('bundle')) {
+        conf.options.alias = {
+            "vue": `vue/dist/vue.${mode === 'dev' ? 'common' : 'min'}.js`
+        };
+        conf.options.transform.unshift('vueify');
+    };
+
+    return conf;
+}
+
 module.exports = function (grunt) {
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -49,39 +76,10 @@ module.exports = function (grunt) {
         },
 
         browserify : {
-            src : {
-                files : {
-                    'app/bundle.js' : 'app/js/app.js',
-                    'app/polyfills.js' : 'app/js/polyfills.js'
-                },
-                options : {
-                    alias : {
-                        "vue": "vue/dist/vue.common.js"
-                    },
-                    browserifyOptions : {
-                        debug : true
-                    },
-                    transform : ["babelify"],
-                    watch : true,
-                    keepAlive : false
-                }
-            },
-
-            dist : {
-                files : {
-                    'dist/bundle.js' : 'dist/js/app.js',
-                    'dist/polyfills.js' : 'dist/js/polyfills.js'
-                },
-                options : {
-                    alias : {
-                        "vue": "vue/dist/vue.min.js"
-                    },
-                    browserifyOptions : {
-                        debug : false
-                    },
-                    transform : ["babelify"],
-                }
-            }
+            bundleSrc : browserifyConf('app/js/app.js', 'app/bundle.js', 'dev'),
+            bundleDist : browserifyConf('dist/js/app.js', 'dist/bundle.js', 'prod'),
+            polyfillsSrc : browserifyConf('app/js/polyfills.js', 'app/polyfills.js', 'dev'),
+            polyfillsDist : browserifyConf('dist/js/polyfills.js', 'dist/polyfills.js', 'prod')
         },
 
         asset_cachebuster : {
@@ -108,7 +106,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('init', [
         'style',
-        'browserify:src'
+        'browserify:bundleSrc',
+        'browserify:polyfillsSrc'
     ]);
 
     grunt.registerTask('build', [
@@ -116,14 +115,16 @@ module.exports = function (grunt) {
         'copy:all',
         'sass',
         'autoprefixer',
-        'browserify:dist',
+        'browserify:bundleDist',
+        'browserify:polyfillsDist',
         'uglify',
         'asset_cachebuster',
         'clean:after'
     ]);
 
     grunt.registerTask('watch-all', [
-        'browserify:src',
+        'browserify:bundleSrc',
+        'browserify:polyfillsSrc',
         'watch'
     ]);
 
