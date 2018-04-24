@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         clean: {
             before : ['dist/*', '.tmp/'],
-            after : ['dist/css/scss', 'dist/js/*']
+            after : ['dist/css/scss', 'dist/js']
         },
 
         sass: {
@@ -68,8 +68,10 @@ module.exports = function (grunt) {
             },
 
             dist : {
-                src : 'dist/js/app.js',
-                dest : 'dist/bundle.js',
+                files : {
+                    'dist/bundle.js' : 'dist/js/app.js',
+                    'dist/polyfills.js' : 'dist/js/polyfills.js'
+                },
                 options : {
                     alias : {
                         "vue": "vue/dist/vue.common.js"
@@ -77,11 +79,7 @@ module.exports = function (grunt) {
                     browserifyOptions : {
                         debug : false
                     },
-                    transform : [
-                        ["babelify", {
-                            presets : ["env"]
-                        }]
-                    ]
+                    transform : ["babelify"],
                 }
             }
         },
@@ -100,8 +98,10 @@ module.exports = function (grunt) {
 
         uglify : {
             build : {
-                src : 'dist/bundle.js',
-                dest : 'dist/bundle.js'
+                files : {
+                    'dist/bundle.js' : ['dist/bundle.js'],
+                    'dist/polyfills.js' : ['dist/polyfills.js']
+                }
             }
         }
     });
