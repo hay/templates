@@ -9,8 +9,12 @@
     "build:css": "npm run build:sass && npm run build:autoprefixer",
     "build:js": "webpack -d",
     "build:sass": "node-sass app/css/scss/style.scss app/css/style.css",
+    "clean" : "rm -rf dist",
+    "clean:after" : "rm -rf dist/css/scss dist/js",
+    "dist" : "npm run clean && webpack -p && cp -rv app dist && npm run clean:after",
+    "postinstall" : "npm run build",
     "serve": "cd app && http-server",
-    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & chokidar 'app/js/*.js' -c 'npm run build:js'"
+    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & webpack -pw"
   },
   "dependencies": {
     "es6-promise": "^4.2.4",
