@@ -2,6 +2,7 @@ export async function test() {
     const json = await fetch("data.json");
     const data = await json.json();
     const el = Array.from(document.querySelectorAll("main"));
+    console.log(data);
     console.log(el);
     console.log([1,2,3].includes(2));
     console.log(Object.assign({ a : 1}, {a : 2}));

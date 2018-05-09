@@ -7,8 +7,9 @@
     "build": "npm run build:js && npm run build:css",
     "build:autoprefixer": "postcss app/css/style.css --use autoprefixer --no-map -r",
     "build:css": "npm run build:sass && npm run build:autoprefixer",
-    "build:js" : "browserify app/js/app.js -t babelify -o app/bundle.js",
+    "build:js": "browserify app/js/app.js -t babelify -o app/bundle.js",
     "build:sass": "node-sass app/css/scss/style.scss app/css/style.css",
+    "serve" : "cd app && http-server",
     "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & chokidar 'app/js/*.js' -c 'npm run build:js'"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
     "chokidar-cli": "^1.2.0",
+    "http-server": "^0.11.1",
     "node-sass": "^4.9.0",
     "postcss": "^6.0.22",
     "postcss-cli": "^5.0.0",
