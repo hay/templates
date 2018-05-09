@@ -1,4 +1,5 @@
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: [
@@ -13,8 +14,20 @@ module.exports = {
                 use : {
                     loader : 'babel-loader'
                 }
+            },
+            {
+                test : /\.vue$/,
+                loader : 'vue-loader'
             }
         ]
+    },
+    plugins : [
+        new VueLoaderPlugin()
+    ],
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+        }
     },
     output: {
         filename: './bundle.js',

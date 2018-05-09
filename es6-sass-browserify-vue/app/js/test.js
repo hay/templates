@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import Test from './test.vue';
+
 export async function test() {
     const json = await fetch("data.json");
     const data = await json.json();
