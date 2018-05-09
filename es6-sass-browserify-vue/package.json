@@ -9,7 +9,7 @@
     "build:css": "npm run build:sass && npm run build:autoprefixer",
     "build:js" : "browserify app/js/app.js -t babelify -o app/bundle.js",
     "build:sass": "node-sass app/css/scss/style.scss app/css/style.css",
-    "watch": "chokidar 'app/css/scss/*.scss' 'app/js/*.js' -c 'npm run build'"
+    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & chokidar 'app/js/*.js' -c 'npm run build:js'"
   },
   "dependencies": {
     "valenski": "^1.3.0",
