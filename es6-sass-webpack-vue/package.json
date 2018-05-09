@@ -14,7 +14,7 @@
     "dist" : "npm run clean && webpack -p && cp -rv app dist && npm run clean:after",
     "postinstall" : "npm run build",
     "serve": "cd app && http-server",
-    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & webpack -pw"
+    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & webpack -dw"
   },
   "dependencies": {
     "es6-promise": "^4.2.4",
@@ -32,8 +32,6 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
     "chokidar-cli": "^1.2.0",
     "http-server": "^0.11.1",
     "node-sass": "^4.9.0",
@@ -41,7 +39,6 @@
     "postcss-cli": "^5.0.0",
     "vue-loader": "^15.0.9",
     "vue-template-compiler": "^2.5.16",
-    "watch": "^1.0.2",
     "webpack": "^4.8.1",
     "webpack-cli": "^2.1.3"
   }
