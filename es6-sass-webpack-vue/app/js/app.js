@@ -1,7 +1,14 @@
-import { test } from './test.js'
+import Vue from 'vue';
+import Test from './test.vue';
 
-async function main() {
-    test();
-}
+new Vue({
+    el : "main",
 
-main();
+    components : {
+        Test
+    },
+
+    data : {
+        test : 'hoi'
+    }
+});

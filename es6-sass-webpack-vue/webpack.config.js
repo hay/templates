@@ -3,7 +3,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: [
-        './app/js/polyfills.js',
         './app/js/app.js'
     ],
     module : {
