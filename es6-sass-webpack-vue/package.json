@@ -1,5 +1,5 @@
 {
-  "name": "hotel",
+  "name": "podcast-top-2020",
   "private": true,
   "version": "0.1.0",
   "main": "index.js",
@@ -8,16 +8,18 @@
     "build:autoprefixer": "postcss app/css/style.css --use autoprefixer --no-map -r",
     "build:css": "npm run build:sass && npm run build:autoprefixer",
     "build:js": "webpack --mode development",
-    "build:sass": "node-sass app/css/scss/style.scss app/css/style.css",
+    "build:sass": "node-sass app/scss/style.scss app/css/style.css",
     "clean": "rm -rf dist",
     "clean:after": "rm -rf dist/css/scss dist/js",
     "dist": "npm run clean && webpack --mode production && cp -rv app dist && npm run clean:after",
     "postinstall": "npm run build",
     "serve": "cd app && http-server",
-    "watch": "chokidar 'app/css/scss/*.scss' -c 'npm run build:css' & webpack -w --mode development"
+    "watch": "chokidar 'app/scss/*.scss' -c 'npm run build:css' & webpack -w --mode development"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.5",
+    "donot": "^0.4.1",
     "npm-check-updates": "^10.0.0",
     "regenerator-runtime": "^0.13.7",
     "valenski": "^1.4.0",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "autoprefixer": "^10.0.2",
     "babel-loader": "^8.2.1",
