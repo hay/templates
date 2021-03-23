@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.5",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -34,7 +36,7 @@
     },
     "rules": {
       "no-unused-vars": 1,
-      "no-debugger" : 0
+      "no-debugger": 0
     }
   },
   "browserslist": [
@@ -42,7 +44,7 @@
     "last 2 versions",
     "not dead"
   ],
-  "babel" : {
+  "babel": {
     "presets": [
       "@vue/cli-plugin-babel/preset"
     ]
