@@ -3,7 +3,7 @@
 
     // This is just one way to distinguish between development and production
     // mode, this could also be an environment variable or something else
-    define('IS_DEV', true);
+    define('IS_DEV', false);
 
     $vite = new Vite([
         "entryPath" => "js/main.js",

@@ -1,13 +1,13 @@
+<script setup>
+    import { ref } from 'vue';
+    import { useStore } from '@/store.js';
+
+    const msg = ref('Hello!');
+    const store = useStore();
+</script>
+
 <template>
-    <screen-home></screen-home>
+    <h1>{{msg}}</h1>
 </template>
 
-<script>
-import ScreenHome from './components/screen-home.vue';
-
-export default {
-    components: {
-        ScreenHome
-    }
-}
-</script>
+<style lang="scss" src="./scss/style.scss"></style>
