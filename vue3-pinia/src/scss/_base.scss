@@ -1,13 +1,16 @@
 body {
-    background: white;
-    color: black;
-    font-family: var(--font-header);
+    background: var(--c-1);
+    color: var(--c-2);
     font-size: 2rem;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-header);
+}
+
+button, input, textarea {
+    color: var(--c-1);
 }
 
 main[v-cloak] {
