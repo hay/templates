@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.2.8",
-    "npm-check-updates": "^4.0.4",
+    "npm-check-updates": "^16.7.4",
     "regenerator-runtime": "^0.13.5",
     "valenski": "^1.3.0",
     "vue": "^2.6.11",
