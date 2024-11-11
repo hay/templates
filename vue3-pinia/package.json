@@ -2,23 +2,22 @@
   "name": "template",
   "private": true,
   "version": "0.0.0",
+  "type" : "module",
   "scripts": {
     "build": "vite build --base='/'",
-    "dev": "vite",
-    "preview": "vite preview --port 5050"
+    "dev": "vite"
   },
   "dependencies": {
-    "core-js": "^3.26.0",
     "donot": "^0.4.1",
-    "pinia": "^2.0.23",
-    "regenerator-runtime": "^0.13.10",
+    "pinia": "^2.2.6",
+    "regenerator-runtime": "^0.14.1",
     "valenski": "^1.5.0",
-    "vue": "^3.2.41"
+    "vue": "^3.5.12"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.2.0",
-    "sass": "^1.56.0",
-    "vite": "^3.2.3",
-    "vite-plugin-remove-console": "^1.2.0"
+    "@vitejs/plugin-vue": "^5.1.5",
+    "sass": "^1.80.6",
+    "vite": "^5.4.11",
+    "vite-plugin-remove-console": "^2.2.0"
   }
 }

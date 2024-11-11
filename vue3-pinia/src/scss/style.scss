@@ -1,6 +1,5 @@
-$valenski-use-small-font-size: false;
-@import "../../node_modules/valenski/valenski";
-@import "values";
-@import "fonts";
-@import "base";
-@import "app";
+@use "../../node_modules/valenski/valenski" with ($valenski-use-small-font-size: false);
+@use "values";
+@use "fonts";
+@use "base";
+@use "app";
